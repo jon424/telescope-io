@@ -157,20 +157,43 @@
       enim quis nunc bibendum, eu facilisis lacus auctor. Aliquam erat volutpat.
     </p>
     <script type="text/javascript">
+      // target is passed in to observerVisualizer
       const target = document.querySelector(".animated-text");
 
+      // target has different styles applied to it. Whatever we can get from the observer
       // for text color? #333333;
+      // target location on screen:
       target.style.border = "1px solid #DD3C10";
       target.style.border = "1px solid #DD3C10";
       target.style.backgroundColor = "#FFEBE8";
+      // observer/options values
 
       function handleIntersection(entries) {
         entries.map((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+            console.log("entry: ", entry);
+            console.log(entry.boundingClientRect);
+            const x = entry.boundingClientRect.x;
+            const y = entry.boundingClientRect.y;
+            const width = entry.boundingClientRect.width;
+            const height = entry.boundingClientRect.height;
+            const top = entry.boundingClientRect.top;
+            const left = entry.boundingClientRect.left;
+            const myDOMRect = new DOMRect(x, y, width, height);
+            console.log("myDOMRect: ", myDOMRect);
+            const box = document.createElement("div");
+            box.style.top = top + "px";
+            box.style.left = left + "px";
+            box.style.width = width + "px";
+            box.style.height = height + "px";
+            box.style.border = "5px solid green";
+            console.log(box);
+            entry.target.appendChild(box);
+            // myDOMRect.style.border = "1px solid green";
+            // entry.boundingClientRect.style.border = "1px solid green";
             // console.log(entry.intersectionRatio);
             // TODO: set threshold value visually on the target element with getBoundingClientRect()
-            console.log(options.threshold);
           } else {
             entry.target.classList.remove("visible");
           }
