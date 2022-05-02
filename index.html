@@ -183,13 +183,23 @@
             const myDOMRect = new DOMRect(x, y, width, height);
             console.log("myDOMRect: ", myDOMRect);
             const box = document.createElement("div");
-            box.style.top = top + "px";
-            box.style.left = left + "px";
+            box.style.position = "absolute";
+            box.style.top = "0px";
+            box.style.left = "0px";
             box.style.width = width + "px";
             box.style.height = height + "px";
-            box.style.border = "5px solid green";
+            box.style.border = "1px solid green";
+
             console.log(box);
             entry.target.appendChild(box);
+
+            // var iconselect = document.getElementById(target);
+            // var emoticonbtn = document.getElementById(box);
+            // var oTop = emoticonbtn.offsetTop;
+            // var oLeft = emoticonbtn.offsetLeft;
+            // iconselect.style.top = oTop;
+            // iconselect.style.left = oLeft;
+            // iconselect.style.position = "absolute";
             // myDOMRect.style.border = "1px solid green";
             // entry.boundingClientRect.style.border = "1px solid green";
             // console.log(entry.intersectionRatio);
