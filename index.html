@@ -157,21 +157,30 @@
       enim quis nunc bibendum, eu facilisis lacus auctor. Aliquam erat volutpat.
     </p>
     <script type="text/javascript">
-      // target is passed in to observerVisualizer
+      // target is a querySelector that is passed in to observerVisualizer
       const target = document.querySelector(".animated-text");
 
       // target has different styles applied to it. Whatever we can get from the observer
       // for text color? #333333;
       // target location on screen:
-      target.style.border = "1px solid #DD3C10";
-      target.style.border = "1px solid #DD3C10";
-      target.style.backgroundColor = "#FFEBE8";
+      target.style.border = "1px solid green";
+      target.style.backgroundColor = "yellow";
+      //   target.style.opacity = "0.2";
       // observer/options values
+
+      const options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.75,
+      };
+      console.log("options: ", options);
 
       function handleIntersection(entries) {
         entries.map((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+            //TODO:
+
             console.log("entry: ", entry);
             console.log(entry.boundingClientRect);
             const x = entry.boundingClientRect.x;
@@ -188,7 +197,11 @@
             box.style.left = "0px";
             box.style.width = width + "px";
             box.style.height = height + "px";
-            box.style.border = "1px solid green";
+
+            box.style.border = "1px solid #DD3C10";
+            box.style.backgroundColor = "#FFEBE8";
+            box.style.zIndex = "-9999999999";
+            // TODO: make onHover for the target element
 
             console.log(box);
             entry.target.appendChild(box);
@@ -210,11 +223,25 @@
         });
       }
 
-      const options = {
-        threshold: 0.75,
-      };
+      //   let options = {
+      //     root: document.querySelector("#scrollArea"),
+      //     rootMargin: "0px",
+      //     threshold: 1.0,
+      //   };
 
-      console.log(options.threshold);
+      // ROOT: The element that is used as the viewport for checking visibility of the target.
+      // Must be the ancestor of the target. Defaults to the browser viewport if not specified
+      // or if null.
+
+      // ROOTMARGIN: Margin around the root. Can have values similar to the CSS margin property,
+      // e.g. "10px 20px 30px 40px" (top, right, bottom, left). The values can be percentages.
+      // This set of values serves to grow or shrink each side of the root element's bounding box
+      //before computing intersections. Defaults to all zeros.
+
+      // THRESHOLD:  If you want the callback to run every time visibility passes another 25%, you
+      // would specify the array [0, 0.25, 0.5, 0.75, 1]. The default is 0 (meaning as soon as even
+      // one pixel is visible, the callback will be run). A value of 1.0 means that the threshold isn't
+      // considered passed until every pixel is visible.
 
       const observer = new IntersectionObserver(handleIntersection, options);
 
