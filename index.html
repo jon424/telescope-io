@@ -226,7 +226,31 @@
             thresholdLine2.style.borderTop = "1px dotted red";
             thresholdLine2.style.height = "1px";
             thresholdLine2.style.width = "100%";
+            // thresholdLine2.innerText = thresholdValue;
+            // thresholdLine2.innerText.style.top = "20px";
             box.appendChild(thresholdLine2);
+
+            const thresholdDisplay1 = document.createElement("p");
+            thresholdDisplay1.style.position = "absolute";
+            thresholdDisplay1.style.fontSize = "14px";
+            thresholdDisplay1.innerText = "threshold: " + thresholdValue;
+
+            // function percentToPixel(percent) {
+            //   return (percent / 100) * (max - min) + min;
+            // }
+            // thresholdDisplay1.style.marginLeft = percentToPixel(-22) + "px";
+            thresholdDisplay1.style.marginLeft = "-22%";
+
+            thresholdDisplay1.style.top = thresholdValue * 100 + "%";
+            thresholdDisplay1.style.color = "green";
+            thresholdLine1.appendChild(thresholdDisplay1);
+
+            const thresholdDisplay2 = document.createElement("p");
+            thresholdDisplay2.style.position = "absolute";
+            thresholdDisplay2.style.fontSize = "14px";
+            thresholdDisplay2.innerText = "threshold: " + thresholdValue;
+            thresholdDisplay2.style.marginLeft = "-22%";
+            thresholdLine2.appendChild(thresholdDisplay2);
 
             // var iconselect = document.getElementById(target);
             // var emoticonbtn = document.getElementById(box);
