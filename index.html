@@ -132,7 +132,7 @@
         erat volutpat.
       </p>
 
-      <p>
+      <p class="other">
         Nam rhoncus vel erat et efficitur. Proin iaculis molestie erat, at
         sagittis enim finibus non. Aliquam tempus elit sit amet leo porta, a
         porttitor erat consequat. Praesent faucibus odio vitae purus pharetra
@@ -180,11 +180,10 @@
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
             //TODO:
-
-            console.log("entry: ", entry);
-            console.log(entry.boundingClientRect);
-            const x = entry.boundingClientRect.x;
-            const y = entry.boundingClientRect.y;
+            // console.log("entry: ", entry);
+            // console.log(entry.boundingClientRect);
+            // const x = entry.boundingClientRect.x;
+            // const y = entry.boundingClientRect.y;
             const width = entry.boundingClientRect.width;
             const height = entry.boundingClientRect.height;
             const top = entry.boundingClientRect.top;
@@ -291,7 +290,6 @@
       // considered passed until every pixel is visible.
 
       const observer = new IntersectionObserver(handleIntersection, options);
-
       observer.observe(target);
     </script>
   </body>
