@@ -207,18 +207,26 @@
             console.log(box);
             entry.target.appendChild(box);
 
-            // threshold line
+            // threshold line 1
             const thresholdValue = options.threshold;
-            const thresholdLine = document.createElement("div");
-            thresholdLine.style.position = "absolute";
-            thresholdLine.style.top = thresholdValue * 100 + "%";
-            thresholdLine.style.left = "0px";
-            thresholdLine.style.borderTop = "1px dotted red";
-            thresholdLine.style.height = "1px";
-            thresholdLine.style.width = "100%";
-            // thresholdLine.style.color = "red";
-            // thresholdLine.style.backgroundColor = "red";
-            box.appendChild(thresholdLine);
+            const thresholdLine1 = document.createElement("div");
+            thresholdLine1.style.position = "absolute";
+            thresholdLine1.style.top = thresholdValue * 100 + "%";
+            thresholdLine1.style.left = "0px";
+            thresholdLine1.style.borderTop = "1px dotted red";
+            thresholdLine1.style.height = "1px";
+            thresholdLine1.style.width = "100%";
+            box.appendChild(thresholdLine1);
+
+            // threshold line 2
+            const thresholdLine2 = document.createElement("div");
+            thresholdLine2.style.position = "absolute";
+            thresholdLine2.style.bottom = thresholdValue * 100 + "%";
+            thresholdLine2.style.left = "0px";
+            thresholdLine2.style.borderTop = "1px dotted red";
+            thresholdLine2.style.height = "1px";
+            thresholdLine2.style.width = "100%";
+            box.appendChild(thresholdLine2);
 
             // var iconselect = document.getElementById(target);
             // var emoticonbtn = document.getElementById(box);
