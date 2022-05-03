@@ -189,8 +189,10 @@
             const height = entry.boundingClientRect.height;
             const top = entry.boundingClientRect.top;
             const left = entry.boundingClientRect.left;
-            const myDOMRect = new DOMRect(x, y, width, height);
-            console.log("myDOMRect: ", myDOMRect);
+            // const myDOMRect = new DOMRect(x, y, width, height);
+            // console.log("myDOMRect: ", myDOMRect);
+
+            // target is the box
             const box = document.createElement("div");
             box.style.position = "absolute";
             box.style.top = "0px";
@@ -202,9 +204,21 @@
             box.style.backgroundColor = "#FFEBE8";
             box.style.zIndex = "-9999999999";
             // TODO: make onHover for the target element
-
             console.log(box);
             entry.target.appendChild(box);
+
+            // threshold line
+            const thresholdValue = options.threshold;
+            const thresholdLine = document.createElement("div");
+            thresholdLine.style.position = "absolute";
+            thresholdLine.style.top = thresholdValue * 100 + "%";
+            thresholdLine.style.left = "0px";
+            thresholdLine.style.borderTop = "1px dotted red";
+            thresholdLine.style.height = "1px";
+            thresholdLine.style.width = "100%";
+            // thresholdLine.style.color = "red";
+            // thresholdLine.style.backgroundColor = "red";
+            box.appendChild(thresholdLine);
 
             // var iconselect = document.getElementById(target);
             // var emoticonbtn = document.getElementById(box);
